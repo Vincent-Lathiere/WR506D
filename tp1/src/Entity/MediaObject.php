@@ -10,6 +10,8 @@ use ApiPlatform\Metadata\Post;
 use ApiPlatform\OpenApi\Model;
 use App\Controller\CreateMediaObjectAction;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -66,5 +68,35 @@ class MediaObject
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setFilePath(?string $filePath): void
+    {
+        $this->filePath = $filePath;
+    }
+
+    public function getFilePath(): ?string
+    {
+        return $this->filePath;
+    }
+
+    public function setFile(?File $file = null): void
+    {
+        $this->file = $file;
+    }
+
+    public function getFile(): ?File
+    {
+        return $this->file;
+    }
+
+    public function setContentUrl(?string $contentUrl): void
+    {
+        $this->contentUrl = $contentUrl;
+    }
+
+    public function getContentUrl(): ?string
+    {
+        return $this->contentUrl;
     }
 }
