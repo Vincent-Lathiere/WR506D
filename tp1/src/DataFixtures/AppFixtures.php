@@ -25,11 +25,16 @@ class AppFixtures extends Fixture
             $firstname = $fullNameExploded[0];
             $lastname = $fullNameExploded[1];
 
+            $nationality = ['Français','Anglais','Américain','Allemand'];
+
             $actor = new Actor();
             $actor->setLastname($lastname);
             $actor->setFirstname($firstname);
             $actor->setDob($faker->dateTimeBetween('-80 years', '-20 years'));
             $actor->setCreatedAt(new \DateTimeImmutable());
+
+            $randomNationality = $nationality[array_rand($nationality)];
+            $actor->setNationality($randomNationality);
 
             $createdActors[] = $actor;
 
